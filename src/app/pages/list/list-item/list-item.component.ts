@@ -10,7 +10,6 @@ export class ListItemComponent {
   @Input() imovel: Imovel = {
     title: "Nome do imóvel",
     majorQuality: "Descrever de forma chamativa a qualidade mais atrativa do imóvel",
-    fullDescription: "Descrever de forma completa o imóvel, localização e oportunidade de investimento",
-    price: "Aceita propostas"
+    fullDescription: "Descrever de forma completa o imóvel, localização e oportunidade de investimento"
   }
 }
