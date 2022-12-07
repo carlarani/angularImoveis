@@ -1,19 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
+
 import { MaterialModule } from '../material/material.module';
+
+import { HeaderComponent } from './header/header.component';
+import { PricePipe } from './pipes/price.pipe';
+import { CustomDirective } from './directive/directive';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    PricePipe,
+    CustomDirective
   ],
   imports: [
     CommonModule,
     MaterialModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    PricePipe,
+    CustomDirective
   ]
 })
 export class SharedModule { }

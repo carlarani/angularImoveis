@@ -1,5 +1,8 @@
 <mat-expansion-panel *ngIf="imovel.price" hideToggle>
     <mat-expansion-panel-header>
+        <button mat-icon-button (click)="makeFavorite(imovel)" [customDirective]="imovel.favorite" aria-label="Example icon button with a heart icon">
+            <mat-icon>favorite</mat-icon>
+          </button>
         <mat-panel-title>
             {{imovel.title}}
         </mat-panel-title>
@@ -8,5 +11,7 @@
         </mat-panel-description>
     </mat-expansion-panel-header>
     <p>{{imovel.fullDescription}}</p>
-    <p id="price">{{imovel.price | currency:"BRL"}}</p>
+    <img src="{{imovel.imgPath}}">
+    <p id="p-lastUpdate">Última atualização: {{imovel.lastUpdate | date:"dd/MM/yyyy"}}</p>
+    <p id="price">{{imovel.price | price }}</p>
 </mat-expansion-panel>

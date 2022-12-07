@@ -10,6 +10,15 @@ export class ListItemComponent {
   @Input() imovel: Imovel = {
     title: "Nome do imóvel",
     majorQuality: "Descrever de forma chamativa a qualidade mais atrativa do imóvel",
-    fullDescription: "Descrever de forma completa o imóvel, localização e oportunidade de investimento"
+    fullDescription: "Descrever de forma completa o imóvel, localização e oportunidade de investimento",
+    seeing: false,
+    favorite: false,
+    lastUpdate: new Date(),
+    imgPath: ""
+  }
+
+  makeFavorite(imovel: Imovel){
+    imovel.favorite = !this.imovel.favorite;
+    console.log(this.imovel.favorite)
   }
 }
