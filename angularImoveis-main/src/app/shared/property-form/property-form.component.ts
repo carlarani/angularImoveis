@@ -7,28 +7,32 @@ import { PropertyService } from 'src/app/services/property.service';
 @Component({
   selector: 'app-property-form',
   templateUrl: './property-form.component.html',
-  styleUrls: ['./property-form.component.css']
+  styleUrls: ['./property-form.component.css'],
+  providers: [{
+    provide: MatDialogRef,
+    useValue: {}
+  }]
 })
 export class PropertyFormComponent {
-  @Input() newProperty: Property = new Property("New property", "Describe major quality", 
-  "Full description", 999999);
+  @Input() newProperty: Property = new Property("New property", "Describe major quality",
+    "Full description", 999999);
   @Input() requestType: string = "post";
-  @Input() closeDialog: () => void = () => {};
+  @Input() closeDialog: () => void = () => { };
 
   propertyForm?: FormGroup;
 
-  constructor(private propertyService: PropertyService, public dialogRef: MatDialogRef<any>) {}
+  constructor(private propertyService: PropertyService, public dialogRef: MatDialogRef<any>) { }
 
   ngOnInit() {
-      this.propertyForm= new FormGroup({
-        title: new FormControl(this.newProperty.title),
-        majorQuality: new FormControl(this.newProperty.majorQuality),
-        fullDescription: new FormControl(this.newProperty.fullDescription),
-        price: new FormControl(this.newProperty.price),
-        imgPath: new FormControl(this.newProperty.imgPath),
-      })
-    }
-  
+    this.propertyForm = new FormGroup({
+      title: new FormControl(this.newProperty.title),
+      majorQuality: new FormControl(this.newProperty.majorQuality),
+      fullDescription: new FormControl(this.newProperty.fullDescription),
+      price: new FormControl(this.newProperty.price),
+      imgPath: new FormControl(this.newProperty.imgPath),
+    })
+  }
+
 
   onSubmitForm() {
     this.propertyForm?.patchValue({
@@ -37,36 +41,36 @@ export class PropertyFormComponent {
       fullDescription: this.propertyForm?.controls['fullDescription'].value,
       price: this.propertyForm?.controls['price'].value,
       // imgPath: this.propertyForm?.controls['imgPath'].value,
-    })    
-    
-    if(this.newProperty.favorite==undefined || this.newProperty.seeing==undefined || this.newProperty.lastUpdate==undefined || this.newProperty.imgPath==undefined)
+    })
+
+    if (this.newProperty.favorite == undefined || this.newProperty.seeing == undefined || this.newProperty.lastUpdate == undefined || this.newProperty.imgPath == undefined)
       this.getEmpty(this.newProperty);
 
-      this.newProperty = {id: this.newProperty.id, ...this.propertyForm?.value};
-     
-      if (this.requestType == "post") {
-        this.propertyService.postProperty(this.newProperty);
-      } else {
-        this.newProperty.lastUpdate= new Date();
-        this.propertyService.updateProperty(this.newProperty.id, this.newProperty);
-      }
-      
-      this.propertyService.saveChanges();
-      console.log(this.newProperty);
-      this.dialogRef.close();
-      this.propertyService.refresh(false);
+    this.newProperty = { id: this.newProperty.id, ...this.propertyForm?.value };
+
+    if (this.requestType == "post") {
+      this.propertyService.postProperty(this.newProperty);
+    } else {
+      this.newProperty.lastUpdate = new Date();
+      this.propertyService.updateProperty(this.newProperty.id, this.newProperty);
+    }
+
+    this.propertyService.saveChanges();
+    console.log(this.newProperty);
+    this.dialogRef.close();
+    this.propertyService.refresh(false);
   }
 
-  getEmpty(prop: Property){
-    if(this.newProperty.id==undefined)
-      this.newProperty.id=Property.updateLastId();
-    if(this.newProperty.favorite==undefined)
-      this.newProperty.favorite=false;
-    if(this.newProperty.seeing==undefined)
-      this.newProperty.seeing=false;
-    if(this.newProperty.imgPath==undefined)
-      this.newProperty.imgPath="/assets/images/casaPadrao.png";
-    this.newProperty.lastUpdate=new Date();
+  getEmpty(prop: Property) {
+    if (this.newProperty.id == undefined)
+      this.newProperty.id = Property.updateLastId();
+    if (this.newProperty.favorite == undefined)
+      this.newProperty.favorite = false;
+    if (this.newProperty.seeing == undefined)
+      this.newProperty.seeing = false;
+    if (this.newProperty.imgPath == undefined)
+      this.newProperty.imgPath = "/assets/images/casaPadrao.png";
+    this.newProperty.lastUpdate = new Date();
   }
 
 }
