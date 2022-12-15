@@ -1,0 +1,51 @@
+@media (max-width: 700px)
+{
+    .mat-expansion-panel-header-description
+   {
+    display: none;
+   }
+}
+
+
+#price {
+    text-align: end;
+}
+
+
+.mat-expansion-panel {
+    margin: 0 20% 1rem;
+    height: fit-content;
+}
+
+button{
+    background-color: transparent;
+    border: unset;
+}
+
+#p-lastUpdate{
+ font-size: smaller;
+}
+
+img{
+    width: 90%;
+    margin: 5px 5%;
+    max-height: 80%;
+}
+
+.btn-icon{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-edit-delete{
+    color: lightgray;
+}
+
+.mat-icon-button{
+    padding: 10%;
+}
+
+.mat-icon{
+    margin: auto;
+}
+
