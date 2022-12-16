@@ -7,5 +7,5 @@ import { SharedModule } from "./shared/shared.module";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'listaDeImoveis';
+  title = 'Realty list';
 }

@@ -9,12 +9,12 @@ export class CustomDirective implements OnChanges{
     customDirective: boolean | undefined;
 
     constructor(private el: ElementRef) {
-        console.log(this.customDirective);
+        // console.log(this.customDirective);
       }
     
       ngOnChanges(changes: SimpleChanges): void {
         if(this.customDirective)
-          this.el.nativeElement.style.color = 'pink';
+          this.el.nativeElement.style.color = 'darkorchid';
           else{
               this.el.nativeElement.style.color = 'black';
           }

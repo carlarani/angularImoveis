@@ -5,11 +5,15 @@ import { MaterialModule } from '../material/material.module';
 import { ListItemComponent } from './list/list-item/list-item.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { CreateComponent } from './create/create.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     ListComponent,
-    ListItemComponent
+    ListItemComponent,
+    CreateComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
