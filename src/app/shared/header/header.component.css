@@ -1,0 +1,28 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.example-icon {
+    background-color: transparent;
+    border: unset;
+}
+
+
+.mat-icon-button{
+    color: black;
+}
+
+.mat-icon{
+    margin: auto;
+}
+
+button:hover {
+    zoom: 1.1;
+}
+
+.active{
+    background-color: #1E2D2F;
+    border-radius: 30px;
+    color: white;
+}
+
